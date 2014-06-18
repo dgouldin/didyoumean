@@ -1,0 +1,1 @@
+stream: bin/runsvdir-dyno
