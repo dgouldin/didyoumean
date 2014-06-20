@@ -8,6 +8,7 @@ from common import filename, twitter, keywords
 url = 'https://stream.twitter.com/1.1/statuses/filter.json?track={0}'.format(
     urllib.quote(','.join(keywords.keys()))
 )
+print(url)
 r = twitter.post(url, stream=True)
 
 with open(filename, 'w') as f:
