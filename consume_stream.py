@@ -21,7 +21,7 @@ while True:
                 print('event=malformed tweet="{0}"'.format(line))
                 continue # malformed tweet payload
 
-            if tweet.get('retweeted'):
+            if 'retweeted_status' in tweet:
                 print('event=retweet')
                 continue # don't reply to retweets
 
