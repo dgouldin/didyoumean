@@ -22,22 +22,22 @@ while True:
                 continue # malformed tweet payload
 
             if 'retweeted_status' in tweet:
-                print('event=retweet')
+                print('event=retweet id={0}'.format(tweet['id_str']))
                 continue # don't reply to retweets
 
-            print('event=received')
+            print('event=received id={0}'.format(tweet['id_str']))
             tweet_lower = tweet['text'].lower()
             for k in keywords.keys():
                 if k.lower() in tweet_lower:
                     keyword = k
                     break
             else:
-                print('event=no_match')
+                print('event=no_match id={0}'.format(tweet['id_str']))
                 continue # no keyword match
 
             replacement = keywords[keyword]
-            print('event=replacement "{0}" -> "{1}"'.format(
-                keyword, replacement))
+            print('event=replacement id={0} "{1}" -> "{2}"'.format(
+                tweet['id_str'], keyword, replacement))
             reply_body = '@{0} did you mean "{1}"?'.format(
                 tweet['user']['screen_name'],
                 replacement,
