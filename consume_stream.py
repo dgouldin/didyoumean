@@ -16,7 +16,7 @@ while True:
                 continue
 
             try:
-                tweet = json.loads(line)
+                tweet = json.loads(line.decode('utf-8'))
             except ValueError:
                 print('event=malformed tweet="{0}"'.format(line))
                 continue # malformed tweet payload
