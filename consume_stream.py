@@ -42,9 +42,13 @@ while True:
                 tweet['user']['screen_name'],
                 replacement,
             )
-            twitter.post(url, {
+            response = twitter.post(url, {
                 'status': reply_body,
                 'in_reply_to_status_id': tweet['id_str'],
                 'trim_user': 'true',
             })
-            print('event=publish tweet="{0}"'.format(reply_body))
+            if response.status_code == 200:
+                print('event=publish tweet="{0}"'.format(reply_body))
+            else:
+                print('event=publish_error status_code={0}, content="{1}"'.format(
+                    response.status_code, response.content))
