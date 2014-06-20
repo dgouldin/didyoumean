@@ -25,7 +25,7 @@ while True:
                 print('event=retweet')
                 continue # don't reply to retweets
 
-            print('event=received tweet="{0}"'.format(tweet['text']))
+            print('event=received')
             tweet_lower = tweet['text'].lower()
             for k in keywords.keys():
                 if k.lower() in tweet_lower:
