@@ -38,9 +38,13 @@ while True:
             replacement = keywords[keyword]
             print('event=replacement id={0} "{1}" -> "{2}"'.format(
                 tweet['id_str'], keyword, replacement))
-            reply_body = '@{0} did you mean "{1}"?'.format(
+            tweet_url = 'https://twitter.com/{}/status/{}'.format(
                 tweet['user']['screen_name'],
+                tweet['id_str'],
+            )
+            reply_body = 'Did you mean "{}"? {}'.format(
                 replacement,
+                tweet_url,
             )
             response = twitter.post(url, {
                 'status': reply_body,
